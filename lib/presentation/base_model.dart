@@ -55,7 +55,7 @@ class BaseModel extends ChangeNotifier {
 
   /// argumentsを返す
   static Object? _getArguments(BuildContext context) {
-    return _getRequest(context)?.settings?.arguments;
+    return _getRequest(context).settings.arguments;
   }
 
   /// WebRequestを返す

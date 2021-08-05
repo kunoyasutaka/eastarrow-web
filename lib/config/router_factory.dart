@@ -1,3 +1,4 @@
+import 'package:eastarrow_web/presentation/dashboard/dashboard_page.dart';
 import 'package:eastarrow_web/presentation/errors/forbidden_page.dart';
 import 'package:eastarrow_web/presentation/errors/internal_error_page.dart';
 import 'package:eastarrow_web/presentation/errors/not_found_page.dart';
@@ -16,7 +17,8 @@ class RouterFactory {
     router.addNotFoundRoute(_pageBuilder(NotFoundPage()));
     router.addInternalErrorRoute(_pageBuilder(InternalErrorPage()));
 
-    // ページを追加したら必ずここにも追加すること
+    /// ページを追加したら必ずここにも追加すること
+    router.addRoute(kRouteDashboard, _pageBuilder(DashboardPage()));
 
     // 未ログインでも閲覧可能なパスの一覧はここに追加すること
     // router.addFilter(LoginVerificationFilter([

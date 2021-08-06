@@ -23,13 +23,13 @@ class FormItemImage extends StatelessWidget {
             size: 30,
             color: Colors.blueGrey.withOpacity(0.3),
           ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5),
-              child: Text(
-                text,
-                style: TextStyle(fontSize: 12, color: Colors.blueGrey),
-              ),
+          Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 12, color: Colors.blueGrey),
             ),
+          ),
         ],
       ),
     );

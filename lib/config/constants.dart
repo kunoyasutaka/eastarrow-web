@@ -10,6 +10,9 @@ const kTitleMembersIndex = '登録者一覧';
 const kTitleNotices = 'お知らせ';
 const kTitleNoticesIndex = 'お知らせ一覧';
 const kTitleNoticesAdd = 'お知らせの追加';
+const kTitleGoods = '商品紹介';
+const kTitleAddGoods = '商品追加ページ';
+const kTitleGoodsList = '商品一覧ページ';
 const kTitleLoginMemberView = 'ログインメンバー';
 
 /// ルート
@@ -20,6 +23,8 @@ const kRouteDashboard = '/';
 const kRouteMembersIndex = '/members';
 const kRouteNoticesIndex = '/notices';
 const kRouteNoticesAdd = '/notices/add';
+const kRouteAddGoods = '/goods/add';
+const kRouteGoodsList = '/goods';
 const kRouteLoginMemberView = '/loginMember/view';
 
 /// クエリ名
@@ -68,6 +73,20 @@ const kSideBarMenuItems = [
       MenuItem(
         title: kTitleNoticesAdd,
         route: kRouteNoticesAdd,
+      ),
+    ],
+  ),
+  MenuItem(
+    title: kTitleGoods,
+    icon: Icons.car_repair,
+    children: [
+      MenuItem(
+        title: kTitleGoodsList,
+        route: kRouteGoodsList,
+      ),
+      MenuItem(
+        title: kTitleAddGoods,
+        route: kRouteAddGoods,
       ),
     ],
   ),

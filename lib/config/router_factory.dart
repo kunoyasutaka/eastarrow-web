@@ -2,6 +2,7 @@ import 'package:eastarrow_web/presentation/dashboard/dashboard_page.dart';
 import 'package:eastarrow_web/presentation/errors/forbidden_page.dart';
 import 'package:eastarrow_web/presentation/errors/internal_error_page.dart';
 import 'package:eastarrow_web/presentation/errors/not_found_page.dart';
+import 'package:eastarrow_web/presentation/goods/add_goods/add_goods_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_router/flutter_web_router.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class RouterFactory {
 
     /// ページを追加したら必ずここにも追加すること
     router.addRoute(kRouteDashboard, _pageBuilder(DashboardPage()));
+    router.addRoute(kRouteDashboard, _pageBuilder(AddGoodsPage()));
 
     // 未ログインでも閲覧可能なパスの一覧はここに追加すること
     // router.addFilter(LoginVerificationFilter([

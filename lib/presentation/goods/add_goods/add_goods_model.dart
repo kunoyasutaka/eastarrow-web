@@ -5,6 +5,7 @@ import 'package:eastarrow_web/domain/goods.dart';
 import 'package:eastarrow_web/exception/application_exception.dart';
 import 'package:eastarrow_web/repository/goods_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../base_model.dart';
 
@@ -24,10 +25,16 @@ class AddGoodsModel extends BaseModel {
 
   /// 画像データ
   Uint8List? imageData;
+  final picker = ImagePicker();
 
   /// ローカルから選択した画像で更新する
   Future updateImage() async {
-    imageData = await showImagePickerDialog();
+    final XFile? data = await picker.pickImage(source: ImageSource.gallery);
+
+    if (data != null) {
+      imageData = await data.readAsBytes();
+    }
+
     notifyListeners();
   }
 

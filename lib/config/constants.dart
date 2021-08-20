@@ -13,6 +13,7 @@ const kTitleNoticesAdd = 'お知らせの追加';
 const kTitleGoods = '商品紹介';
 const kTitleAddGoods = '商品追加ページ';
 const kTitleGoodsList = '商品一覧ページ';
+const kTitleGoodsView = '商品詳細ページ';
 const kTitleLoginMemberView = 'ログインメンバー';
 
 /// ルート
@@ -25,7 +26,16 @@ const kRouteNoticesIndex = '/notices';
 const kRouteNoticesAdd = '/notices/add';
 const kRouteAddGoods = '/goods/add';
 const kRouteGoodsList = '/goods';
+const kRouteGoodsView = '/goods/view/{noticeId}';
 const kRouteLoginMemberView = '/loginMember/view';
+
+/// セッション名
+const kSessionSortColumnName = 'sortColumnName';
+const kSessionSortAscending = 'sortAscending';
+const kSessionRowsPerPage = 'rowsPerPage';
+const kSessionInitialFirstRowIndex = 'initialFirstRowIndex';
+const kSessionFilterText = 'filterText';
+const kSessionMemberIcons = 'memberIcons';
 
 /// クエリ名
 const kQuerySortColumnName = 'sort';

@@ -124,7 +124,7 @@ class AddGoodsPage extends StatelessWidget {
                               label: const Text('車検有無'),
                               required: true,
                               value: TextField(
-                                controller: model.mileageController,
+                                controller: model.inspectionController,
                                 decoration: BootstrapInputDecoration(),
                                 maxLength: 40,
                                 maxLines: 1,

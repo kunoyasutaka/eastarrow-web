@@ -82,18 +82,18 @@ class LoginVerificationFilter implements WebFilter {
     // 未ログイン
 
     // 除外されたパスなら次のFilterへ
-    if (_matchExclusion(filterChain, requestPath)) {
-      return filterChain.executeNextFilter()!;
-    }
+    // if (_matchExclusion(filterChain, requestPath)) {
+    //   return filterChain.executeNextFilter()!;
+    // }
 
     // ルートパスの場合はログイン画面にリダイレクトさせる
-    if (requestPath == '/') {
-      throw RedirectWebRouterException(
-          settings: RouteSettings(name: kRouteLogin));
-    }
+    // if (requestPath == '/') {
+    //   throw RedirectWebRouterException(
+    //       settings: RouteSettings(name: kRouteLogin));
+    // }
 
     // ページが見つからない
-    throw NotFoundWebRouterException();
+    // throw NotFoundWebRouterException();
   }
 
   /// リクエストパスと除外パスが一致するかを返す

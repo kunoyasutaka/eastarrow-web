@@ -5,9 +5,6 @@ extension DateTimeEx on DateTime {
 
   /// DateTime => YYYY/MM/DD(W)
   String get formatYMDW {
-    if (this == null) {
-      return '';
-    }
     final ymd = DateFormat("yyyy/MM/dd").format(this);
     final w = weekdays[weekday];
     return '$ymd($w)';
@@ -15,9 +12,6 @@ extension DateTimeEx on DateTime {
 
   /// DateTime => YYYY/MM/DD(W) HH:MM
   String get formatYMDWHM {
-    if (this == null) {
-      return '';
-    }
     final ymd = DateFormat("yyyy/MM/dd").format(this);
     final hm = DateFormat("HH:mm").format(this);
     final w = weekdays[weekday];

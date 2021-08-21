@@ -1,3 +1,4 @@
+import 'package:eastarrow_web/domain/goods.dart';
 import 'package:eastarrow_web/repository/goods_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class GoodsListModel extends IndexModel {
   final repository = GoodsRepository();
 
   @override
-  Future<List> fetchAll() async {
+  Future<List<Goods>> fetchAll() async {
     return await repository.fetchGoodsList();
   }
 

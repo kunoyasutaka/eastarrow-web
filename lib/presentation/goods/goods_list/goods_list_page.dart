@@ -125,7 +125,7 @@ class GoodsListPage extends StatelessWidget {
         ),
         source: WebDataTableSource(
           // 並び替え
-          sortAscending: model.sortAscending,
+          sortAscending: model.sortAscending ?? false,
           sortColumnName: model.sortColumnName,
 
           // 列情報
@@ -151,15 +151,15 @@ class GoodsListPage extends StatelessWidget {
               name: 'createdAt',
               label: Text('作成日時'),
               dataCell: (value) =>
-                  DataCell(Text((value as DateTime).formatYMDWHM)),
-              filterText: (value) => (value as DateTime).formatYMDWHM,
+                  DataCell(Text((value as DateTime).formatYMDW)),
+              filterText: (value) => (value as DateTime).formatYMDW,
             ),
             WebDataColumn(
               name: 'updatedAt',
               label: Text('更新日時'),
               dataCell: (value) =>
-                  DataCell(Text((value as DateTime).formatYMDWHM)),
-              filterText: (value) => (value as DateTime).formatYMDWHM,
+                  DataCell(Text((value as DateTime).formatYMDW)),
+              filterText: (value) => (value as DateTime).formatYMDW,
             ),
           ],
 
@@ -203,7 +203,7 @@ class GoodsListPage extends StatelessWidget {
           print('onRowsPerPageChanged(): rowsPerPage = $rowsPerPage');
           model.updateRowsPerPage(rowsPerPage);
         },
-        rowsPerPage: model.rowsPerPage,
+        rowsPerPage: model.rowsPerPage ?? 1,
         availableRowsPerPage: model.availableRowsPerPage,
 
         // ページ切り替え
@@ -211,7 +211,7 @@ class GoodsListPage extends StatelessWidget {
           print('onPageChanged(): rowIndex = $rowIndex');
           model.updateInitialFirstRowIndex(rowIndex);
         },
-        initialFirstRowIndex: model.initialFirstRowIndex,
+        initialFirstRowIndex: model.initialFirstRowIndex ?? 1,
       ),
     );
   }
@@ -222,7 +222,7 @@ class GoodsListPage extends StatelessWidget {
       'id': goods.id,
       'name': goods.name,
       'introduction': goods.introduction,
-      'imageUrl': goods.imageUrl,
+      'imageUrl': goods.imageUrl![0], // 一覧表示用に1つ目の画像を選択
       'bodyValue': goods.bodyValue,
       'totalValue': goods.totalValue,
       'modelYear': goods.modelYear,

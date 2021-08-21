@@ -346,7 +346,7 @@ class BaseModel extends ChangeNotifier {
   /// Query
   ///
   /// クエリから値を取得する
-  String getQueryParameter(String key, {String? defaultValue}) {
+  String? getQueryParameter(String key, {String? defaultValue}) {
     final value = request.uri.queryParameters[key];
 
     if (value != null) {
@@ -355,7 +355,7 @@ class BaseModel extends ChangeNotifier {
       if (defaultValue != null) {
         return defaultValue;
       } else {
-        return '';
+        return null;
       }
     }
   }

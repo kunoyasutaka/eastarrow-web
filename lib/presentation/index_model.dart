@@ -37,7 +37,7 @@ abstract class IndexModel<T> extends BaseModel {
       if (_willSearch) {
         _willSearch = false;
         _latestTick = null;
-        if (filterTexts != null && filterTexts.isNotEmpty) {
+        if (filterTexts.isNotEmpty) {
           setSession(kSessionFilterText, filterTextController.text);
           notifyListeners();
         }
@@ -51,10 +51,10 @@ abstract class IndexModel<T> extends BaseModel {
 
   /// 並び替え条件
   String? sortColumnName;
-  bool sortAscending;
+  bool? sortAscending;
 
   /// 初期表示時の行Index
-  late int initialFirstRowIndex;
+  int? initialFirstRowIndex;
 
   /// テキスト検索
   final filterTextController = TextEditingController();
@@ -64,7 +64,7 @@ abstract class IndexModel<T> extends BaseModel {
   int? _latestTick;
 
   /// 1ページあたりの表示件数
-  int rowsPerPage;
+  int? rowsPerPage;
   List<int> availableRowsPerPage;
 
   /// 選択モードかどうか
@@ -106,7 +106,7 @@ abstract class IndexModel<T> extends BaseModel {
     // クエリから取得するが、なければセッションから復元する
     sortColumnName = getQueryParameter(
       kQuerySortColumnName,
-      defaultValue: await getSession<String>(
+      defaultValue: await getSession<String?>(
         kSessionSortColumnName,
         defaultValue: sortColumnName,
       ),
@@ -116,7 +116,7 @@ abstract class IndexModel<T> extends BaseModel {
     if (asc != null) {
       sortAscending = asc.isNotEmpty;
     } else {
-      sortAscending = await getSession<bool>(
+      sortAscending = await getSession<bool?>(
             kSessionSortAscending,
             defaultValue: sortAscending,
           ) ??
@@ -127,7 +127,7 @@ abstract class IndexModel<T> extends BaseModel {
     if (page != null) {
       rowsPerPage = int.parse(page);
     } else {
-      rowsPerPage = await getSession<int>(
+      rowsPerPage = await getSession<int?>(
             kSessionRowsPerPage,
             defaultValue: rowsPerPage,
           ) ??
@@ -138,7 +138,7 @@ abstract class IndexModel<T> extends BaseModel {
     if (rowIndex != null) {
       initialFirstRowIndex = int.parse(rowIndex);
     } else {
-      initialFirstRowIndex = await getSession<int>(
+      initialFirstRowIndex = await getSession<int?>(
             kSessionInitialFirstRowIndex,
             defaultValue: initialFirstRowIndex,
           ) ??
@@ -146,12 +146,13 @@ abstract class IndexModel<T> extends BaseModel {
     }
 
     filterTextController.text = getQueryParameter(
-      kQueryFilterText,
-      defaultValue: await getSession<String>(
-        kSessionFilterText,
-        defaultValue: filterTextController.text,
-      ),
-    );
+          kQueryFilterText,
+          defaultValue: await getSession<String?>(
+            kSessionFilterText,
+            defaultValue: filterTextController.text,
+          ),
+        ) ??
+        '';
 
     // 一覧を取得する
     startLoading();

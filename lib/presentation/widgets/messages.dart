@@ -19,26 +19,22 @@ class Messages extends StatelessWidget {
     }
 
     List<Widget> children = [];
-    if (model.messages != null) {
-      for (String message in model.messages) {
-        children.add(
-          BootstrapAlert(
-            type: BootstrapAlertType.success,
-            child: Expanded(child: Text(message)),
-            dismissble: true,
-          ),
-        );
-      }
+    for (String message in model.messages) {
+      children.add(
+        BootstrapAlert(
+          type: BootstrapAlertType.success,
+          child: Expanded(child: Text(message)),
+          dismissble: true,
+        ),
+      );
     }
-    if (model.errorMessages != null) {
-      for (String message in model.errorMessages) {
-        children.add(
-          BootstrapAlert(
-            type: BootstrapAlertType.danger,
-            child: Expanded(child: Text('【エラー】 $message')),
-          ),
-        );
-      }
+    for (String message in model.errorMessages) {
+      children.add(
+        BootstrapAlert(
+          type: BootstrapAlertType.danger,
+          child: Expanded(child: Text('【エラー】 $message')),
+        ),
+      );
     }
     return Column(
       children: children,

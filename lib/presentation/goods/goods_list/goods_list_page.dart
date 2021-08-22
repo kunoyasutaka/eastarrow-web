@@ -199,19 +199,19 @@ class GoodsListPage extends StatelessWidget {
         },
 
         // 1ページ毎の表示件数
-        onRowsPerPageChanged: (rowsPerPage) {
-          print('onRowsPerPageChanged(): rowsPerPage = $rowsPerPage');
-          model.updateRowsPerPage(rowsPerPage);
-        },
-        rowsPerPage: model.rowsPerPage ?? 1,
-        availableRowsPerPage: model.availableRowsPerPage,
-
-        // ページ切り替え
-        onPageChanged: (rowIndex) {
-          print('onPageChanged(): rowIndex = $rowIndex');
-          model.updateInitialFirstRowIndex(rowIndex);
-        },
-        initialFirstRowIndex: model.initialFirstRowIndex ?? 1,
+        // onRowsPerPageChanged: (rowsPerPage) {
+        //   print('onRowsPerPageChanged(): rowsPerPage = $rowsPerPage');
+        //   model.updateRowsPerPage(rowsPerPage);
+        // },
+        // rowsPerPage: model.rowsPerPage ?? 1,
+        // availableRowsPerPage: model.availableRowsPerPage,
+        //
+        // // ページ切り替え
+        // onPageChanged: (rowIndex) {
+        //   print('onPageChanged(): rowIndex = $rowIndex');
+        //   model.updateInitialFirstRowIndex(rowIndex);
+        // },
+        // initialFirstRowIndex: model.initialFirstRowIndex ?? 1,
       ),
     );
   }

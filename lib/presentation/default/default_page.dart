@@ -102,14 +102,10 @@ class DefaultPage<M extends BaseModel> extends StatelessWidget {
   List<Widget> _buildActions(DefaultModel model) {
     return [
       PopupMenuButton(
-        child: model.loginMember.photoUrl != null
-            ? CircleAvatar(
-                backgroundImage: NetworkImage(model.loginMember.photoUrl!),
-              )
-            : Icon(
-                Icons.account_circle,
-                size: 36,
-              ),
+        child: Icon(
+          Icons.account_circle,
+          size: 36,
+        ),
         itemBuilder: (context) {
           return kActionMenuItems.map((MenuItem item) {
             return PopupMenuItem<MenuItem>(

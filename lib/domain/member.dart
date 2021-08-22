@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eastarrow_web/domain/user_role.dart';
 
 class MemberField {
   static const id = 'id';
@@ -10,6 +11,7 @@ class MemberField {
   static const carType = 'carType';
   static const inspectionDay = 'inspectionDay';
   static const chatTitle = 'chatTitle';
+  static const role = 'role';
 
   static const createdAt = 'createdAt';
   static const updatedAt = 'updatedAt';
@@ -25,6 +27,7 @@ class Member {
   final String? carType;
   final String? inspectionDay;
   final List<Map>? chatTitle;
+  final UserRole? role;
 
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -39,6 +42,7 @@ class Member {
     this.carType,
     this.inspectionDay,
     this.chatTitle,
+    this.role,
     this.createdAt,
     this.updatedAt,
   });
@@ -56,6 +60,7 @@ class Member {
       carType: data[MemberField.carType] ?? '',
       inspectionDay: data[MemberField.inspectionDay] ?? '',
       chatTitle: List<Map>.from(data[MemberField.chatTitle] ?? []),
+      role: UserRoleHelper.valueOf(data[MemberField.role]),
       createdAt: data[MemberField.createdAt].toDate(),
       updatedAt: data[MemberField.updatedAt].toDate(),
     );

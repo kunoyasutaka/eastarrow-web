@@ -1,19 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eastarrow_web/domain/user_role.dart';
+
+class LoginMemberField {
+  static const id = 'id';
+  static const name = 'name';
+  static const role = 'role';
+}
+
 class LoginMember {
   /// ID
   final String? id;
 
-  /// 名前
+  /// ネーム
   final String? name;
 
-  /// 写真画像URL
-  final String? photoUrl;
+  /// ロール
+  final UserRole? role;
 
-  /// 入会日時
-  final DateTime? createDtime;
+  LoginMember({
+    this.id,
+    this.name,
+    this.role,
+  });
 
-  /// 更新日時
-  final DateTime? modifyDtime;
-
-  LoginMember(
-      {this.id, this.name, this.photoUrl, this.createDtime, this.modifyDtime});
+  factory LoginMember.fromFirestore(DocumentSnapshot snap) {
+    final Map<String, dynamic> data = snap.data() as Map<String, dynamic>;
+    return LoginMember(
+      id: snap.id,
+      name: data[LoginMemberField.name] ?? '',
+      role: UserRoleHelper.valueOf(data[LoginMemberField.role]),
+    );
+  }
 }

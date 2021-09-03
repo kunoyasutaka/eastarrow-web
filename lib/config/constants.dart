@@ -13,7 +13,8 @@ const kTitleNoticesAdd = 'お知らせの追加';
 const kTitleGoods = '商品紹介';
 const kTitleAddGoods = '商品追加ページ';
 const kTitleGoodsList = '商品一覧ページ';
-const kTitleGoodsView = '商品詳細ページ';
+const kTitleGoodsDetail = '商品詳細ページ';
+const kTitleGoodsEdit = '商品詳細ページ';
 const kTitleLoginMemberView = 'ログインメンバー';
 
 /// ルート
@@ -26,7 +27,8 @@ const kRouteNoticesIndex = '/notices';
 const kRouteNoticesAdd = '/notices/add';
 const kRouteAddGoods = '/goods/add';
 const kRouteGoodsList = '/goods';
-const kRouteGoodsView = '/goods/view/{noticeId}';
+const kRouteGoodsDetail = '/goods/view/{goodsId}';
+const kRouteGoodsEdit = '/notices/edit/{goodsId}';
 const kRouteLoginMemberView = '/loginMember/view';
 
 /// セッション名

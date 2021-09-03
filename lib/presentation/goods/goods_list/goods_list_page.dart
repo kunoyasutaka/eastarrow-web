@@ -171,7 +171,7 @@ class GoodsListPage extends StatelessWidget {
               ? (rows, index) async {
                   // 詳細画面に遷移する
                   await model.push(
-                    kRouteGoodsView,
+                    kRouteGoodsDetail,
                     data: {
                       'goodsId': rows[index]['id'],
                     },

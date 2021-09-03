@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 /// FormItem 画像選択
 class FormItemImage extends StatelessWidget {
   final IconData icon;
-  final String text;
+  final String? text;
 
   FormItemImage({
     Key? key,
     this.icon = Icons.image,
-    required this.text,
+    this.text,
   }) : super(key: key);
 
   @override
@@ -23,13 +23,14 @@ class FormItemImage extends StatelessWidget {
             size: 30,
             color: Colors.blueGrey.withOpacity(0.3),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: Text(
-              text,
-              style: TextStyle(fontSize: 12, color: Colors.blueGrey),
+          if (text != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Text(
+                text!,
+                style: TextStyle(fontSize: 12, color: Colors.blueGrey),
+              ),
             ),
-          ),
         ],
       ),
     );

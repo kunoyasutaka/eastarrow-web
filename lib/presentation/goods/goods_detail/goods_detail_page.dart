@@ -170,7 +170,7 @@ class GoodsDetailPage extends StatelessWidget {
                                   type: BootstrapButtonType.defaults,
                                   child: Text('戻る'),
                                   onPressed: () async {
-                                    await model.reopen(kRouteNoticesIndex);
+                                    await model.reopen(kTitleGoodsList);
                                   },
                                 ),
                               ),

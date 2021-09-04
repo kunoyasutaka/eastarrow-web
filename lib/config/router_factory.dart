@@ -3,6 +3,7 @@ import 'package:eastarrow_web/presentation/errors/forbidden_page.dart';
 import 'package:eastarrow_web/presentation/errors/internal_error_page.dart';
 import 'package:eastarrow_web/presentation/errors/not_found_page.dart';
 import 'package:eastarrow_web/presentation/goods/add_goods/add_goods_page.dart';
+import 'package:eastarrow_web/presentation/goods/edit_goods/edit_goods_page.dart';
 import 'package:eastarrow_web/presentation/goods/goods_detail/goods_detail_page.dart';
 import 'package:eastarrow_web/presentation/goods/goods_list/goods_list_page.dart';
 import 'package:eastarrow_web/presentation/login/login_page.dart';
@@ -28,6 +29,7 @@ class RouterFactory {
     router.addRoute(kRouteAddGoods, _pageBuilder(AddGoodsPage()));
     router.addRoute(kRouteGoodsList, _pageBuilder(GoodsListPage()));
     router.addRoute(kRouteGoodsDetail, _pageBuilder(GoodsDetailPage()));
+    router.addRoute(kRouteGoodsEdit, _pageBuilder(EditGoodsPage()));
 
     /// 未ログインでも閲覧可能なパスの一覧はここに追加すること
     router.addFilter(LoginVerificationFilter([

@@ -14,7 +14,7 @@ const kTitleGoods = '商品紹介';
 const kTitleAddGoods = '商品追加ページ';
 const kTitleGoodsList = '商品一覧ページ';
 const kTitleGoodsDetail = '商品詳細ページ';
-const kTitleGoodsEdit = '商品詳細ページ';
+const kTitleGoodsEdit = '商品編集ページ';
 const kTitleLoginMemberView = 'ログインメンバー';
 
 /// ルート

@@ -94,5 +94,28 @@
       loadMainDartJs();
     }
   </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyABLQua-6WiKFivSPYPf90CBTH0Q66CW3E",
+    authDomain: "eastarrow-app.firebaseapp.com",
+    projectId: "eastarrow-app",
+    storageBucket: "eastarrow-app.appspot.com",
+    messagingSenderId: "978496020415",
+    appId: "1:978496020415:web:8d3e3124fc0492e9bf0b0a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>

@@ -60,7 +60,7 @@ class SessionRepository {
     final prefs = await SharedPreferences.getInstance();
     for (final key in prefs.getKeys().toList()) {
       if (key.contains(prefix, 0)) {
-        if (!await prefs.remove(key)) {
+        if (!(await prefs.remove(key))) {
           return false;
         }
       }

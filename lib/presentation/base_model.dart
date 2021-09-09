@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:eastarrow_web/config/constants.dart';
 import 'package:eastarrow_web/repository/session_repository.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +52,7 @@ class BaseModel extends ChangeNotifier {
 
   /// argumentsを返す
   static Object? _getArguments(BuildContext context) {
-    return _getRequest(context)?.settings?.arguments;
+    return _getRequest(context).settings.arguments;
   }
 
   /// WebRequestを返す
@@ -228,14 +225,6 @@ class BaseModel extends ChangeNotifier {
     );
   }
 
-  /// 画像選択ダイアログ（ImagePicker）を表示する
-  Future<Uint8List> showImagePickerDialog() async {
-    final methodChannel = const MethodChannel('flutter_web_image_picker');
-    final data =
-        await methodChannel.invokeMapMethod<String, dynamic>('pickImage');
-    return base64.decode(data!['data']);
-  }
-
   /// AboutDialogを表示する
   void showAdminAboutDialog() async {
     final version = await rootBundle.loadString('web/version.txt');
@@ -359,7 +348,16 @@ class BaseModel extends ChangeNotifier {
   /// クエリから値を取得する
   String? getQueryParameter(String key, {String? defaultValue}) {
     final value = request.uri.queryParameters[key];
-    return value != null ? value : defaultValue;
+
+    if (value != null) {
+      return value;
+    } else {
+      if (defaultValue != null) {
+        return defaultValue;
+      } else {
+        return null;
+      }
+    }
   }
 
   ///

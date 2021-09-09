@@ -7,7 +7,7 @@ class AdminApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'サロン管理Webアプリ',
+      title: '管理画面',
       theme: ThemeData(
         primarySwatch: AdminColors.themeBlack,
         textTheme: Theme.of(context).textTheme.apply(

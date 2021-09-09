@@ -1,6 +1,13 @@
+import 'package:eastarrow_web/presentation/dashboard/dashboard_page.dart';
 import 'package:eastarrow_web/presentation/errors/forbidden_page.dart';
 import 'package:eastarrow_web/presentation/errors/internal_error_page.dart';
 import 'package:eastarrow_web/presentation/errors/not_found_page.dart';
+import 'package:eastarrow_web/presentation/goods/add_goods/add_goods_page.dart';
+import 'package:eastarrow_web/presentation/goods/edit_goods/edit_goods_page.dart';
+import 'package:eastarrow_web/presentation/goods/goods_detail/goods_detail_page.dart';
+import 'package:eastarrow_web/presentation/goods/goods_list/goods_list_page.dart';
+import 'package:eastarrow_web/presentation/login/login_page.dart';
+import 'package:eastarrow_web/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_router/flutter_web_router.dart';
 import 'package:provider/provider.dart';
@@ -16,12 +23,18 @@ class RouterFactory {
     router.addNotFoundRoute(_pageBuilder(NotFoundPage()));
     router.addInternalErrorRoute(_pageBuilder(InternalErrorPage()));
 
-    // ページを追加したら必ずここにも追加すること
+    /// ページを追加したら必ずここにも追加すること
+    router.addRoute(kRouteLogin, _pageBuilder(LoginPage()));
+    router.addRoute(kRouteDashboard, _pageBuilder(DashboardPage()));
+    router.addRoute(kRouteAddGoods, _pageBuilder(AddGoodsPage()));
+    router.addRoute(kRouteGoodsList, _pageBuilder(GoodsListPage()));
+    router.addRoute(kRouteGoodsDetail, _pageBuilder(GoodsDetailPage()));
+    router.addRoute(kRouteGoodsEdit, _pageBuilder(EditGoodsPage()));
 
-    // 未ログインでも閲覧可能なパスの一覧はここに追加すること
-    // router.addFilter(LoginVerificationFilter([
-    //   kRouteLogin,
-    // ]));
+    /// 未ログインでも閲覧可能なパスの一覧はここに追加すること
+    router.addFilter(LoginVerificationFilter([
+      kRouteLogin,
+    ]));
 
     router.setOnComplete((settings, widget) {
       return PageRouteBuilder(
@@ -56,22 +69,23 @@ class LoginVerificationFilter implements WebFilter {
 
   final List<String> exclusionRoutes;
 
+  final authRepository = AuthRepository();
+
   @override
   Widget execute(WebFilterChain filterChain) {
     final requestPath = Uri.parse(filterChain.settings.name!).path;
 
-    // TODO auth処理ができたらコメントアウト解除
-    //if (AuthRepository.instance.isLogin) {
-    // ログイン済み
+    if (authRepository.isLogin) {
+      // ログイン済み
 
-    // 除外されたパスに一致したらルートパスにリダイレクトさせる
-    if (_matchExclusion(filterChain, requestPath)) {
-      throw RedirectWebRouterException(settings: RouteSettings(name: '/'));
+      // 除外されたパスに一致したらルートパスにリダイレクトさせる
+      if (_matchExclusion(filterChain, requestPath)) {
+        throw RedirectWebRouterException(settings: RouteSettings(name: '/'));
+      }
+
+      // 次のFilterへ
+      return filterChain.executeNextFilter()!;
     }
-
-    // 次のFilterへ
-    return filterChain.executeNextFilter()!;
-    //}
 
     // 未ログイン
 

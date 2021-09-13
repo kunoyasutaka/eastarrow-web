@@ -30,21 +30,6 @@ class GoodsDetailPage extends StatelessWidget {
                       sizes: 'col-12',
                       child: PageHeading(
                         title: kTitleGoodsDetail,
-                        breadcrumbsItems: [
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleNotices,
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleNoticesIndex,
-                            onTap: () async {
-                              await model.reopen(kRouteNoticesIndex);
-                            },
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoodsDetail,
-                            active: true,
-                          ),
-                        ],
                       ),
                     ),
                     BootstrapCol(

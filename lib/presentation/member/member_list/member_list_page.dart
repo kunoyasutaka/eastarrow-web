@@ -32,12 +32,6 @@ class MemberListPage extends StatelessWidget {
                       sizes: 'col-12',
                       child: PageHeading(
                         title: kTitleMembersIndex,
-                        breadcrumbsItems: [
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleMembersIndex,
-                            active: true,
-                          ),
-                        ],
                       ),
                     ),
                     BootstrapCol(

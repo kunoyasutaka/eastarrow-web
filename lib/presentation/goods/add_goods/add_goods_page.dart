@@ -32,15 +32,6 @@ class AddGoodsPage extends StatelessWidget {
                       sizes: 'col-12',
                       child: PageHeading(
                         title: kTitleNoticesAdd,
-                        breadcrumbsItems: [
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleNotices,
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleNoticesAdd,
-                            active: true,
-                          ),
-                        ],
                       ),
                     ),
                     BootstrapCol(

@@ -32,27 +32,6 @@ class EditGoodsPage extends StatelessWidget {
                       sizes: 'col-12',
                       child: PageHeading(
                         title: kTitleGoodsEdit,
-                        breadcrumbsItems: [
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoods,
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoodsList,
-                            onTap: () async {
-                              await model.reopen(kRouteGoodsList);
-                            },
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoodsDetail,
-                            onTap: () async {
-                              await model.reopenView();
-                            },
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoodsEdit,
-                            active: true,
-                          ),
-                        ],
                       ),
                     ),
                     BootstrapCol(

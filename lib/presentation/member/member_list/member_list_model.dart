@@ -1,5 +1,5 @@
-import 'package:eastarrow_web/domain/goods.dart';
-import 'package:eastarrow_web/repository/goods_repository.dart';
+import 'package:eastarrow_web/domain/member.dart';
+import 'package:eastarrow_web/repository/member_repository.dart';
 import 'package:flutter/material.dart';
 
 import '../../index_model.dart';
@@ -11,20 +11,18 @@ class MemberListModel extends IndexModel {
     sortColumnName: 'createdAt',
     sortAscending: false,
     primaryKey: 'id',
-    recordDisplayName: '商品紹介',
+    recordDisplayName: '登録者情報',
   );
 
-  final repository = GoodsRepository();
+  final repository = MemberRepository();
 
   @override
-  Future<List<Goods>> fetchAll() async {
-    return await repository.fetchGoodsList();
+  Future<List<Member>> fetchAll() async {
+    return await repository.fetchMemberList();
   }
 
   @override
-  Future delete(record) async {
-    await repository.deleteGoods(record);
-  }
+  Future delete(record) async {}
 
   @override
   void find(String key) {

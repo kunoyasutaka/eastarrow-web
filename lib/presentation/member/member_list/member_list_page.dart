@@ -1,5 +1,5 @@
 import 'package:eastarrow_web/config/constants.dart';
-import 'package:eastarrow_web/domain/goods.dart';
+import 'package:eastarrow_web/domain/member.dart';
 import 'package:eastarrow_web/presentation/default/default_page.dart';
 import 'package:eastarrow_web/presentation/member/member_list/member_list_model.dart';
 import 'package:eastarrow_web/presentation/widgets/messages.dart';
@@ -65,11 +65,11 @@ class MemberListPage extends StatelessWidget {
   /// 登録者一覧テーブル
   Widget _buildTable(IndexModel model) {
     if (!model.isLoading && model.records.length == 0) {
-      // お知らせが0件の場合
+      // 登録者が0件の場合
       return Padding(
         padding: const EdgeInsets.only(top: 20),
         child: BootstrapParagraphs(
-          child: Text('お知らせは登録されていません'),
+          child: Text('登録者がいません'),
         ),
       );
     }
@@ -77,31 +77,7 @@ class MemberListPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: WebDataTable(
-        header: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: BootstrapButton(
-                type: BootstrapButtonType.defaults,
-                child: Text(model.isSelecting ? '解除' : '選択'),
-                onPressed: () {
-                  model.toggleSelecting();
-                },
-              ),
-            ),
-            if (model.isSelecting)
-              BootstrapButton(
-                type: BootstrapButtonType.danger,
-                child: Text('一括削除'),
-                onPressed: model.selectedRowKeys.isNotEmpty
-                    ? () async {
-                  await model.deleteSelected();
-                }
-                    : null,
-              ),
-          ],
-        ),
+        header: const Text('登録者リスト'),
         source: WebDataTableSource(
           // 並び替え
           sortAscending: model.sortAscending ?? false,
@@ -110,34 +86,20 @@ class MemberListPage extends StatelessWidget {
           // 列情報
           columns: [
             WebDataColumn(
-              name: 'imageUrl',
-              label: Text(''),
-              dataCell: (value) => DataCell(
-                CircleAvatar(
-                  backgroundColor:
-                  value == '' ? Colors.grey.withOpacity(0.5) : Colors.white,
-                  backgroundImage: value == '' ? null : NetworkImage(value),
-                ),
-              ),
-              sortable: false,
-            ),
-            WebDataColumn(
               name: 'name',
-              label: Text('商品名'),
+              label: Text('名前'),
               dataCell: (value) => DataCell(Text('$value')),
             ),
             WebDataColumn(
               name: 'createdAt',
-              label: Text('作成日時'),
-              dataCell: (value) =>
-                  DataCell(Text((value as DateTime).formatYMDW)),
+              label: Text('登録日時'),
+              dataCell: (value) => DataCell(Text((value as DateTime).formatYMDW)),
               filterText: (value) => (value as DateTime).formatYMDW,
             ),
             WebDataColumn(
               name: 'updatedAt',
               label: Text('更新日時'),
-              dataCell: (value) =>
-                  DataCell(Text((value as DateTime).formatYMDW)),
+              dataCell: (value) => DataCell(Text((value as DateTime).formatYMDW)),
               filterText: (value) => (value as DateTime).formatYMDW,
             ),
           ],
@@ -148,21 +110,22 @@ class MemberListPage extends StatelessWidget {
           // 行タップ
           onTapRow: !model.isSelecting
               ? (rows, index) async {
-            // 詳細画面に遷移する
-            await model.push(
-              kRouteGoodsDetail,
-              data: {
-                'goodsId': rows[index]['id'],
-              },
-            );
-          }
+                  // 詳細画面に遷移する
+                  ///TODO memberの詳細
+                  await model.push(
+                    kRouteGoodsDetail,
+                    data: {
+                      'goodsId': rows[index]['id'],
+                    },
+                  );
+                }
               : null,
           // 一括削除
           onSelectRows: model.isSelecting
               ? (keys) {
-            print('onSelectRows(): keys = $keys');
-            model.updateSelectedRowKeys(keys);
-          }
+                  print('onSelectRows(): keys = $keys');
+                  model.updateSelectedRowKeys(keys);
+                }
               : null,
           selectedRowKeys: model.selectedRowKeys,
           primaryKeyName: model.primaryKey,
@@ -196,21 +159,19 @@ class MemberListPage extends StatelessWidget {
   }
 
   /// 一覧で使う形式に変換する
-  Map<String, dynamic> _toRow(Goods goods) {
+  Map<String, dynamic> _toRow(Member member) {
     return {
-      'id': goods.id,
-      'name': goods.name,
-      'introduction': goods.introduction,
-      'imageUrl': goods.imageUrl![0], // 一覧表示用に1つ目の画像を選択
-      'bodyValue': goods.bodyValue,
-      'totalValue': goods.totalValue,
-      'modelYear': goods.modelYear,
-      'mileage': goods.mileage,
-      'inspection': goods.inspection,
-      'repair': goods.repair,
-      'area': goods.area,
-      'createdAt': goods.createdAt,
-      'updatedAt': goods.updatedAt,
+      'id': member.id,
+      'name': member.name,
+      'email': member.email,
+      'birthDate': member.birthDate,
+      'location': member.location,
+      'phoneNumber': member.phoneNumber,
+      'carType': member.carType,
+      'inspectionDay': member.inspectionDay,
+      'chatTitle': member.chatTitle,
+      'createdAt': member.createdAt,
+      'updatedAt': member.updatedAt,
     };
   }
 }

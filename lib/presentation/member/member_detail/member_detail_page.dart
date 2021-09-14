@@ -3,7 +3,6 @@ import 'package:eastarrow_web/presentation/default/default_page.dart';
 import 'package:eastarrow_web/presentation/member/member_detail/member_detail_model.dart';
 import 'package:eastarrow_web/presentation/widgets/date_time_format.dart';
 import 'package:eastarrow_web/presentation/widgets/form_container.dart';
-import 'package:eastarrow_web/presentation/widgets/form_item_image.dart';
 import 'package:eastarrow_web/presentation/widgets/form_row.dart';
 import 'package:eastarrow_web/presentation/widgets/messages.dart';
 import 'package:eastarrow_web/presentation/widgets/page_heading.dart';
@@ -29,133 +28,94 @@ class MemberDetailPage extends StatelessWidget {
                     BootstrapCol(
                       sizes: 'col-12',
                       child: PageHeading(
-                        title: kTitleGoodsDetail,
+                        title: kTitleMemberDetail,
                       ),
                     ),
                     BootstrapCol(
                       sizes: 'col-12',
                       child: Messages(model: model),
                     ),
-                    if (model.goods != null)
+                    if (model.member != null)
                       BootstrapCol(
                         sizes: 'col-12',
                         child: BootstrapPanel(
                           body: FormContainer(
                             children: [
                               FormRow(
-                                label: const Text('商品名'),
-                                value: (model.goods!.name != null)
-                                    ? Text(model.goods!.name!)
+                                label: const Text('名前'),
+                                value: (model.member!.name != null)
+                                    ? Text(model.member!.name!)
                                     : Text(''),
                               ),
                               FormRow(
-                                label: const Text('商品紹介'),
-                                value: (model.goods!.introduction != null)
-                                    ? Text(model.goods!.introduction!)
+                                label: const Text('メールアドレス'),
+                                value: (model.member!.email != null)
+                                    ? Text(model.member!.email!)
                                     : Text(''),
                               ),
                               FormRow(
-                                label: const Text('本体価格'),
-                                value: (model.goods!.bodyValue != null)
-                                    ? Text(model.goods!.bodyValue!)
+                                label: const Text('誕生日'),
+                                value: (model.member!.birthDate != null)
+                                    ? Text(model.member!.birthDate!)
                                     : Text(''),
                               ),
                               FormRow(
-                                label: const Text('支払い総額'),
-                                value: (model.goods!.totalValue != null)
-                                    ? Text(model.goods!.totalValue!)
+                                label: const Text('住所'),
+                                value: (model.member!.location != null)
+                                    ? Text(model.member!.location!)
                                     : Text(''),
                               ),
                               FormRow(
-                                label: const Text('年式'),
-                                value: (model.goods!.modelYear != null)
-                                    ? Text(model.goods!.modelYear!)
+                                label: const Text('電話番号'),
+                                value: (model.member!.phoneNumber != null)
+                                    ? Text(model.member!.phoneNumber!)
                                     : Text(''),
                               ),
                               FormRow(
-                                label: const Text('走行距離'),
-                                value: (model.goods!.mileage != null)
-                                    ? Text(model.goods!.mileage!)
+                                label: const Text('車種'),
+                                value: (model.member!.carType != null)
+                                    ? Text(model.member!.carType!)
                                     : Text(''),
                               ),
                               FormRow(
-                                label: const Text('車検有無'),
-                                value: (model.goods!.inspection != null)
-                                    ? Text(model.goods!.inspection!)
+                                label: const Text('車検日'),
+                                value: (model.member!.inspectionDay != null)
+                                    ? Text(model.member!.inspectionDay!)
                                     : Text(''),
                               ),
                               FormRow(
-                                label: const Text('修理歴'),
-                                value: (model.goods!.repair != null)
-                                    ? Text(model.goods!.repair!)
-                                    : Text(''),
-                              ),
-                              FormRow(
-                                label: const Text('地域'),
-                                value: (model.goods!.area != null)
-                                    ? Text(model.goods!.area!)
-                                    : Text(''),
-                              ),
-                              FormRow(
-                                label: const Text('画像'),
-                                value: Row(
-                                  children: [
-                                    SizedBox(
-                                      height: 200,
-                                      width: 200,
-                                      child:
-                                      model.goods!.imageUrl?.isNotEmpty ??
-                                          false
-                                          ? Image.network(
-                                          model.goods!.imageUrl![0])
-                                          : FormItemImage(),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              FormRow(
-                                label: const Text('作成日時'),
-                                value: (model.goods!.createdAt != null)
+                                label: const Text('登録日時'),
+                                value: (model.member!.createdAt != null)
                                     ? Text(DateTimeFormat()
-                                    .formatYMDW(model.goods!.createdAt!))
+                                    .formatYMDW(model.member!.createdAt!))
                                     : Text(''),
                               ),
                               FormRow(
                                 label: const Text('更新日時'),
-                                value: (model.goods!.updatedAt != null)
+                                value: (model.member!.updatedAt != null)
                                     ? Text(DateTimeFormat()
-                                    .formatYMDW(model.goods!.updatedAt!))
+                                    .formatYMDW(model.member!.updatedAt!))
                                     : Text(''),
                               ),
                             ],
                           ),
                         ),
                       ),
-                    if (model.goods != null)
+                    if (model.member != null)
                       BootstrapCol(
                         sizes: 'col-12',
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 20),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              SizedBox(
-                                width: 100,
-                                child: BootstrapButton(
-                                  type: BootstrapButtonType.danger,
-                                  child: Text('削除'),
-                                  onPressed: () async {
-                                    await model.deleteGoods();
-                                  },
-                                ),
-                              ),
-                              Spacer(),
                               SizedBox(
                                 width: 100,
                                 child: BootstrapButton(
                                   type: BootstrapButtonType.defaults,
                                   child: Text('戻る'),
                                   onPressed: () async {
-                                    await model.reopen(kTitleGoodsList);
+                                    await model.reopen(kTitleMembersIndex);
                                   },
                                 ),
                               ),
@@ -165,15 +125,7 @@ class MemberDetailPage extends StatelessWidget {
                                 child: BootstrapButton(
                                   type: BootstrapButtonType.primary,
                                   child: Text('編集'),
-                                  onPressed: () async {
-                                    // 編集画面に遷移する
-                                    await model.push(
-                                      kRouteGoodsEdit,
-                                      data: {
-                                        'goodsId': model.goods!.id!,
-                                      },
-                                    );
-                                  },
+                                  onPressed: (){},
                                 ),
                               ),
                             ],

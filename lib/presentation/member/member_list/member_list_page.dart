@@ -113,9 +113,9 @@ class MemberListPage extends StatelessWidget {
                   // 詳細画面に遷移する
                   ///TODO memberの詳細
                   await model.push(
-                    kRouteGoodsDetail,
+                    kRouteMemberDetail,
                     data: {
-                      'goodsId': rows[index]['id'],
+                      'memberId': rows[index]['id'],
                     },
                   );
                 }

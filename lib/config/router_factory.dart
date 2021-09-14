@@ -7,6 +7,7 @@ import 'package:eastarrow_web/presentation/goods/edit_goods/edit_goods_page.dart
 import 'package:eastarrow_web/presentation/goods/goods_detail/goods_detail_page.dart';
 import 'package:eastarrow_web/presentation/goods/goods_list/goods_list_page.dart';
 import 'package:eastarrow_web/presentation/login/login_page.dart';
+import 'package:eastarrow_web/presentation/member/member_detail/member_detail_page.dart';
 import 'package:eastarrow_web/presentation/member/member_list/member_list_page.dart';
 import 'package:eastarrow_web/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class RouterFactory {
     router.addRoute(kRouteGoodsDetail, _pageBuilder(GoodsDetailPage()));
     router.addRoute(kRouteGoodsEdit, _pageBuilder(EditGoodsPage()));
     router.addRoute(kRouteMembersIndex, _pageBuilder(MemberListPage()));
+    router.addRoute(kRouteMemberDetail, _pageBuilder(MemberDetailPage()));
 
     /// 未ログインでも閲覧可能なパスの一覧はここに追加すること
     router.addFilter(LoginVerificationFilter([

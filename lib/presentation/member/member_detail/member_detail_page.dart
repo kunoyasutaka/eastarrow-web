@@ -124,7 +124,8 @@ class MemberDetailPage extends StatelessWidget {
                                 width: 100,
                                 child: BootstrapButton(
                                   type: BootstrapButtonType.primary,
-                                  child: Text('編集'),
+                                  child: Text('連絡画面へ'),
+                                  /// TODO 連絡ページへの遷移処理
                                   onPressed: (){},
                                 ),
                               ),

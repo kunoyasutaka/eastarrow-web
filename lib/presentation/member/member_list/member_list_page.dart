@@ -120,15 +120,6 @@ class MemberListPage extends StatelessWidget {
                   );
                 }
               : null,
-          // 一括削除
-          onSelectRows: model.isSelecting
-              ? (keys) {
-                  print('onSelectRows(): keys = $keys');
-                  model.updateSelectedRowKeys(keys);
-                }
-              : null,
-          selectedRowKeys: model.selectedRowKeys,
-          primaryKeyName: model.primaryKey,
 
           // テキスト検索
           filterTexts: model.filterTexts,

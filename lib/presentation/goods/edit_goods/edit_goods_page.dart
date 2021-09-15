@@ -178,16 +178,17 @@ class EditGoodsPage extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              SizedBox(
-                                width: 100,
-                                child: BootstrapButton(
-                                  type: BootstrapButtonType.defaults,
-                                  child: Text('戻る'),
-                                  onPressed: () async {
-                                    await model.reopenView();
-                                  },
-                                ),
-                              ),
+                              /// 戻るボタンの不具合
+                              // SizedBox(
+                              //   width: 100,
+                              //   child: BootstrapButton(
+                              //     type: BootstrapButtonType.defaults,
+                              //     child: Text('戻る'),
+                              //     onPressed: () async {
+                              //       await model.reopenView();
+                              //     },
+                              //   ),
+                              // ),
                               SizedBox(
                                 width: 100,
                                 child: BootstrapButton(

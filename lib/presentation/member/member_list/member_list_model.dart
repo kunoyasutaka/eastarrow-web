@@ -22,9 +22,6 @@ class MemberListModel extends IndexModel {
   }
 
   @override
-  Future delete(record) async {}
-
-  @override
   void find(String key) {
     return records.where((r) => r.id == key).first;
   }

@@ -149,17 +149,18 @@ class GoodsDetailPage extends StatelessWidget {
                                 ),
                               ),
                               Spacer(),
-                              SizedBox(
-                                width: 100,
-                                child: BootstrapButton(
-                                  type: BootstrapButtonType.defaults,
-                                  child: Text('戻る'),
-                                  onPressed: () async {
-                                    await model.reopen(kTitleGoodsList);
-                                  },
-                                ),
-                              ),
-                              SizedBox(width: 10),
+                              /// 戻るボタンの不具合
+                              // SizedBox(
+                              //   width: 100,
+                              //   child: BootstrapButton(
+                              //     type: BootstrapButtonType.defaults,
+                              //     child: Text('戻る'),
+                              //     onPressed: () async {
+                              //       await model.reopen(kRouteGoodsList);
+                              //     },
+                              //   ),
+                              // ),
+                              // SizedBox(width: 10),
                               SizedBox(
                                 width: 100,
                                 child: BootstrapButton(

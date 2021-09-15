@@ -80,7 +80,7 @@ abstract class IndexModel<T> extends BaseModel {
 
   /// abstract 削除する
   @protected
-  Future delete(T record);
+  Future delete(T record) async {}
 
   /// abstract 検索する
   @protected

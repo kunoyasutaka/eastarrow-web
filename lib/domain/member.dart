@@ -61,8 +61,8 @@ class Member {
       inspectionDay: data[MemberField.inspectionDay] ?? '',
       chatTitle: List<Map>.from(data[MemberField.chatTitle] ?? []),
       role: UserRoleHelper.valueOf(data[MemberField.role] ?? ''),
-      createdAt: data[MemberField.createdAt].toDate() ?? '',
-      updatedAt: data[MemberField.updatedAt].toDate() ?? '',
+      createdAt: data[MemberField.createdAt]?.toDate(),
+      updatedAt: data[MemberField.updatedAt]?.toDate(),
     );
   }
 }

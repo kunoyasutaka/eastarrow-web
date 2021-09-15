@@ -115,7 +115,7 @@ class MemberDetailPage extends StatelessWidget {
                                   type: BootstrapButtonType.defaults,
                                   child: Text('戻る'),
                                   onPressed: () async {
-                                    await model.reopen(kTitleMembersIndex);
+                                    await model.pop();
                                   },
                                 ),
                               ),

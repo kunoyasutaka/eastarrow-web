@@ -93,14 +93,14 @@ class MemberListPage extends StatelessWidget {
             WebDataColumn(
               name: 'createdAt',
               label: Text('登録日時'),
-              dataCell: (value) => DataCell(Text((value as DateTime).formatYMDW)),
-              filterText: (value) => (value as DateTime).formatYMDW,
+              dataCell: (value) => DataCell(Text(value)),
+              filterText: (value) => value,
             ),
             WebDataColumn(
               name: 'updatedAt',
               label: Text('更新日時'),
-              dataCell: (value) => DataCell(Text((value as DateTime).formatYMDW)),
-              filterText: (value) => (value as DateTime).formatYMDW,
+              dataCell: (value) => DataCell(Text(value)),
+              filterText: (value) => value,
             ),
           ],
 
@@ -161,8 +161,8 @@ class MemberListPage extends StatelessWidget {
       'carType': member.carType,
       'inspectionDay': member.inspectionDay,
       'chatTitle': member.chatTitle,
-      'createdAt': member.createdAt,
-      'updatedAt': member.updatedAt,
+      'createdAt': member.createdAt?.formatYMDW ?? '',
+      'updatedAt': member.updatedAt?.formatYMDW ?? '',
     };
   }
 }

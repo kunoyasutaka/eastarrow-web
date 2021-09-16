@@ -29,12 +29,6 @@ class DashboardPage extends StatelessWidget {
                       sizes: 'col-12',
                       child: PageHeading(
                         title: kTitleDashboard,
-                        breadcrumbsItems: [
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleDashboard,
-                            active: true,
-                          ),
-                        ],
                       ),
                     ),
                     BootstrapCol(

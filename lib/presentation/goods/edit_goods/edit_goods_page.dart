@@ -32,27 +32,6 @@ class EditGoodsPage extends StatelessWidget {
                       sizes: 'col-12',
                       child: PageHeading(
                         title: kTitleGoodsEdit,
-                        breadcrumbsItems: [
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoods,
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoodsList,
-                            onTap: () async {
-                              await model.reopen(kRouteGoodsList);
-                            },
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoodsDetail,
-                            onTap: () async {
-                              await model.reopenView();
-                            },
-                          ),
-                          BootstrapBreadcrumbsItem(
-                            text: kTitleGoodsEdit,
-                            active: true,
-                          ),
-                        ],
                       ),
                     ),
                     BootstrapCol(
@@ -199,16 +178,17 @@ class EditGoodsPage extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              SizedBox(
-                                width: 100,
-                                child: BootstrapButton(
-                                  type: BootstrapButtonType.defaults,
-                                  child: Text('戻る'),
-                                  onPressed: () async {
-                                    await model.reopenView();
-                                  },
-                                ),
-                              ),
+                              /// 戻るボタンの不具合
+                              // SizedBox(
+                              //   width: 100,
+                              //   child: BootstrapButton(
+                              //     type: BootstrapButtonType.defaults,
+                              //     child: Text('戻る'),
+                              //     onPressed: () async {
+                              //       await model.reopenView();
+                              //     },
+                              //   ),
+                              // ),
                               SizedBox(
                                 width: 100,
                                 child: BootstrapButton(
